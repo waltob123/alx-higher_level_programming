@@ -5,7 +5,6 @@ import sys
 if __name__ == '__main__':
     sum = 0
     args_length = len(sys.argv)
-    
     if args_length <= 1:
         sum = 0
         print('{}'.format(sum))
