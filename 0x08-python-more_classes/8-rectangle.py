@@ -103,8 +103,8 @@ class Rectangle:
         '''
         if not isinstance(rect_1, Rectangle):
             raise TypeError('rect_1 must be an instance of Rectangle')
-        if not isinstance(rect_1, Rectangle):
-            raise TypeError('rect_1 must be an instance of Rectangle')
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError('rect_2 must be an instance of Rectangle')
 
         # check for the rectangle with the larges area
         if rect_1.area() > rect_2.area():
