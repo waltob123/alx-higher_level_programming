@@ -12,7 +12,7 @@ def say_my_name(first_name, last_name=""):
         last_name(str)
 
     Return:
-        first_name + last_name (str)
+        None
     '''
 
     if not isinstance(first_name, str):
