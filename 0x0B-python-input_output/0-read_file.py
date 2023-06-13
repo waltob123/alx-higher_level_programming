@@ -4,7 +4,7 @@
 
 def read_file(filename=""):
     '''
-    A function that reads a file and prints it to 
+    A function that reads a file and prints it to
     stdout.
 
     Args:
