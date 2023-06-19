@@ -2,6 +2,7 @@
 '''base'''
 
 import json
+import csv
 
 
 class Base:
@@ -78,7 +79,42 @@ class Base:
         filename = str(cls.__name__) + '.json'
         try:
             with open(filename, 'r') as f:
-                list_of_dictionaries = Base.to_json_string(f.read())
+                list_of_dictionaries = Base.from_json_string(f.read())
                 return [cls.create(**item) for item in list_of_dictionaries]
         except (FileNotFoundError):
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        filename = str(cls.__name__) + '.csv'
+        with open(filename, 'w', newline='') as csv_file:
+            if list_objs is None or len(list_objs) == 0:
+                csv_file.write('[]')
+            else:
+                if cls.__name__ == 'Rectangle':
+                    fieldnames = ['id', 'width', 'height', 'x', 'y']
+                elif cls.__name__ == 'Square':
+                    fieldnames = ['id', 'size', 'x', 'y']
+                csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+                for obj in list_objs:
+                    csv_writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        filename = str(cls.__name__) + '.csv'
+        try:
+            with open(filename, 'r', newline='') as csv_file:
+                if cls.__name__ == 'Rectangle':
+                    fieldnames = ['id', 'width', 'height', 'x', 'y']
+                elif cls.__name__ == 'Square':
+                    fieldnames = ['id', 'size', 'x', 'y']
+                csv_reader = csv.DictReader(csv_file, fieldnames=fieldnames)
+                dict_list = []
+                for row in csv_reader:
+                    new_dict = {}
+                    for k, v in row.items():
+                        new_dict[k] = int(v)
+                    dict_list.append(new_dict)
+                return [cls.create(**obj) for obj in dict_list]
+        except FileNotFoundError:
             return []
