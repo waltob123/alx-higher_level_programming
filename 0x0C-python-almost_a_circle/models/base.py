@@ -81,7 +81,7 @@ class Base:
             with open(filename, 'r') as f:
                 list_of_dictionaries = Base.from_json_string(f.read())
                 return [cls.create(**item) for item in list_of_dictionaries]
-        except (FileNotFoundError):
+        except (FileNotFoundError, IOError):
             return []
 
     @classmethod
@@ -116,5 +116,5 @@ class Base:
                         new_dict[k] = int(v)
                     dict_list.append(new_dict)
                 return [cls.create(**obj) for obj in dict_list]
-        except FileNotFoundError:
+        except (FileNotFoundError, IOError):
             return []
