@@ -2,7 +2,7 @@
 
 const length = process.argv.length;
 
-if (length === 2 || length === 3) {
+if (length <= 3) {
   console.log(0);
 } else if (length > 3) {
   let count = 2;
