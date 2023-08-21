@@ -11,10 +11,8 @@ mysql_database_name and state_name_searched.
 import MySQLdb
 import sys
 
-if __name__ == '__main__':
-    db = MySQLdb.connect(host='localhost', user=sys.argv[1],
-                         passwd=sys.argv[2], db=sys.argv[3])
-    cursor = db.cursor()
-    cursor.execute('SELECT * FROM `states` WHERE name = "{name}"\
-            ORDER BY `id` ASC'.format(name=sys.argv[4]))
-    [print(state) for state in cursor.fetchall()]
+if __name__ == "__main__":
+    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
+    c = db.cursor()
+    c.execute("SELECT * FROM `states`")
+    [print(state) for state in c.fetchall() if state[1] == sys.argv[4]]
