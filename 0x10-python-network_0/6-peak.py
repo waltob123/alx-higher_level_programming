@@ -25,7 +25,7 @@ def find_peak(list_of_integers):
 
     # using binary search
     mid = len(list_of_integers) / 2  # get the middle element
-    peak = list_of_integers(mid)  # set peak to the middle element
+    peak = list_of_integers[mid]  # set peak to the middle element
     # if peak is greater than it's neighbors return peak
     # else if peak is less than it's neigbors return find_peak
     if peak > list_of_integers[mid-1] and peak > list_of_integers[mid+1]:
