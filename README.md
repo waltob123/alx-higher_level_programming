@@ -25,6 +25,7 @@ ALX Software Engineering Higher Level Programming (Spring II) Projects.
 - [0x0F-python-object_relational_mapping](./0x0F-python-object_relational_mapping)
 - [0x10-python-network_0](./0x10-python-network_0)
 - [0x11-python-network_1](./0x11-python-network_1)
+- [0x14-javascript-web_scrapping](./0x14-javascript-web_scrapping)
 
 ## Author
 
